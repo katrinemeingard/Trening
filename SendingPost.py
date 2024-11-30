@@ -1,15 +1,17 @@
+suff_list = [".com", ".ru", ".net"]
+
 def send_email(message, recipient, *, sender='university.help@gmail.com'):
 
-        if not '@' in recipient and sender:
-            test_string = sender , recipient
-            suff_list = [".com", ".ru", ".net"]
-            res = test_string.endswith(tuple(suff_list))
+        if not '@' in recipient:
+            print(f'Невозможно отправить письмо с адреса {sender} на адрес {recipient}')
+            return
+        elif sender.endswith(tuple(suff_list)) == False or recipient.endswith(tuple(suff_list)) == False:
             print(f'Невозможно отправить письмо с адреса {sender} на адрес {recipient}')
             return
         elif recipient == sender:
             print('Нельзя отправить письмо самому себе!')
             return
-        elif sender != sender:
+        elif sender.lower() != 'university.help@gmail.com':
             print(f'НЕСТАНДАРТНЫЙ ОТПРАВИТЕЛЬ! Письмо отправлено с адреса {sender} на адрес {recipient}')
             return
         else:
